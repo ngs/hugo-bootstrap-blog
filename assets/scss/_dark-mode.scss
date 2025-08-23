@@ -1,29 +1,46 @@
-// Dark mode styles
+// Dark mode styles with CSS custom properties
 [data-bs-theme="dark"] {
+  // Define dark mode color variations
+  --bs-body-bg: #1a1a1a;
+  --bs-body-color: #e9ecef;
+  --bs-emphasis-color: #fff;
+  --bs-secondary-color: rgba(233, 236, 239, 0.75);
+  --bs-tertiary-color: rgba(233, 236, 239, 0.5);
+  --bs-body-bg-rgb: 26, 26, 26;
+  --bs-body-color-rgb: 233, 236, 239;
+  --bs-emphasis-color-rgb: 255, 255, 255;
+  
+  // Link colors will be inherited from color-scheme.html configuration
+  // They default to --bs-primary which can be the same in dark mode
+  
+  // Border colors
+  --bs-border-color: #495057;
+  --bs-border-color-translucent: rgba(73, 80, 87, 0.15);
+  
   // Background colors
-  background-color: #1a1a1a;
-  color: #e9ecef;
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
   
   // Blog post styles
   .blog-post {
     .post-meta {
-      color: #adb5bd;
+      color: var(--bs-secondary-color);
     }
     
     .post-content {
       pre {
         background-color: #2d2d2d;
-        color: #e9ecef;
+        color: var(--bs-body-color);
       }
       
       blockquote {
-        border-left-color: #495057;
-        color: #adb5bd;
+        border-left-color: var(--bs-border-color);
+        color: var(--bs-secondary-color);
       }
       
       code {
         background-color: #2d2d2d;
-        color: #e9ecef;
+        color: var(--bs-body-color);
       }
     }
   }
@@ -34,53 +51,55 @@
       background-color: #2d2d2d;
       
       .category-count {
-        background-color: #495057;
-        color: #e9ecef;
+        background-color: var(--bs-border-color);
+        color: var(--bs-body-color);
       }
     }
   }
   
-  // Links
-  a {
-    color: #66b3ff;
+  // Links - only apply to content links, not styled components
+  // Don't override colors for badges, buttons, or other Bootstrap components
+  a:not(.btn):not(.badge):not(.nav-link):not(.navbar-brand):not(.page-link):not(.dropdown-item) {
+    color: var(--bs-link-color);
     
     &:hover {
-      color: #4da3ff;
+      color: var(--bs-link-hover-color);
+      opacity: 0.8;
     }
   }
   
   // Cards
   .card {
     background-color: #2d2d2d;
-    border-color: #495057;
+    border-color: var(--bs-border-color);
   }
   
   // Forms
   .form-control {
     background-color: #2d2d2d;
-    border-color: #495057;
-    color: #e9ecef;
+    border-color: var(--bs-border-color);
+    color: var(--bs-body-color);
     
     &:focus {
       background-color: #2d2d2d;
-      border-color: #66b3ff;
-      color: #e9ecef;
+      border-color: var(--bs-link-color);
+      color: var(--bs-body-color);
     }
     
     &::placeholder {
-      color: #6c757d;
+      color: var(--bs-tertiary-color);
     }
   }
   
   // Buttons
   .btn-outline-secondary {
-    color: #adb5bd;
-    border-color: #495057;
+    color: var(--bs-secondary-color);
+    border-color: var(--bs-border-color);
     
     &:hover {
-      background-color: #495057;
-      border-color: #495057;
-      color: #e9ecef;
+      background-color: var(--bs-border-color);
+      border-color: var(--bs-border-color);
+      color: var(--bs-body-color);
     }
   }
   
@@ -90,10 +109,10 @@
     
     .navbar-brand,
     .nav-link {
-      color: #e9ecef !important;
+      color: var(--bs-body-color) !important;
       
       &:hover {
-        color: #66b3ff !important;
+        color: var(--bs-link-color) !important;
       }
     }
   }
@@ -103,10 +122,10 @@
     background-color: #2d2d2d;
     
     .social-links a {
-      color: #adb5bd;
+      color: var(--bs-secondary-color);
       
       &:hover {
-        color: #e9ecef;
+        color: var(--bs-body-color);
       }
     }
   }
@@ -115,38 +134,38 @@
   .pagination {
     .page-link {
       background-color: #2d2d2d;
-      border-color: #495057;
-      color: #66b3ff;
+      border-color: var(--bs-border-color);
+      color: var(--bs-link-color);
       
       &:hover {
-        background-color: #495057;
-        border-color: #495057;
-        color: #e9ecef;
+        background-color: var(--bs-border-color);
+        border-color: var(--bs-border-color);
+        color: var(--bs-body-color);
       }
     }
     
     .page-item.active .page-link {
-      background-color: #0066cc;
-      border-color: #0066cc;
+      background-color: var(--bs-primary);
+      border-color: var(--bs-primary);
     }
     
     .page-item.disabled .page-link {
       background-color: #2d2d2d;
-      border-color: #495057;
-      color: #6c757d;
+      border-color: var(--bs-border-color);
+      color: var(--bs-tertiary-color);
     }
   }
   
   // Tables
   .table {
-    color: #e9ecef;
+    color: var(--bs-body-color);
     
     th {
-      border-color: #495057;
+      border-color: var(--bs-border-color);
     }
     
     td {
-      border-color: #495057;
+      border-color: var(--bs-border-color);
     }
   }
   

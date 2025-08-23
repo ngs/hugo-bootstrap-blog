@@ -1,0 +1,264 @@
+{{- if or site.Params.colors site.Params.colors_dark -}}
+<style>
+  :root {
+    {{- with site.Params.colors.primary }}
+    --bs-primary: {{ . }};
+    {{- end }}
+    {{- with site.Params.colors.success }}
+    --bs-success: {{ . }};
+    {{- end }}
+    {{- with site.Params.colors.info }}
+    --bs-info: {{ . }};
+    {{- end }}
+    {{- with site.Params.colors.warning }}
+    --bs-warning: {{ . }};
+    {{- end }}
+    {{- with site.Params.colors.danger }}
+    --bs-danger: {{ . }};
+    {{- end }}
+    {{- with site.Params.colors.secondary }}
+    --bs-secondary: {{ . }};
+    {{- end }}
+    {{- with site.Params.colors.light }}
+    --bs-light: {{ . }};
+    {{- end }}
+    {{- with site.Params.colors.dark }}
+    --bs-dark: {{ . }};
+    {{- end }}
+    
+    /* Set link colors to primary by default */
+    --bs-link-color: var(--bs-primary);
+    --bs-link-hover-color: var(--bs-primary);
+  }
+  
+  /* Default link styles using primary color */
+  a:not(.btn):not(.badge):not(.nav-link):not(.navbar-brand):not(.page-link):not(.dropdown-item) {
+    color: var(--bs-link-color);
+  }
+  
+  a:not(.btn):not(.badge):not(.nav-link):not(.navbar-brand):not(.page-link):not(.dropdown-item):hover {
+    color: var(--bs-link-hover-color);
+    opacity: 0.8;
+  }
+  
+  /* Dark mode color overrides from config */
+  [data-bs-theme="dark"] {
+    {{- with site.Params.colors_dark.primary }}
+    --bs-primary: {{ . }};
+    {{- else }}
+    {{- with site.Params.colors.primary }}
+    --bs-primary: {{ . }};
+    {{- end }}
+    {{- end }}
+    {{- with site.Params.colors_dark.success }}
+    --bs-success: {{ . }};
+    {{- else }}
+    {{- with site.Params.colors.success }}
+    --bs-success: {{ . }};
+    {{- end }}
+    {{- end }}
+    {{- with site.Params.colors_dark.info }}
+    --bs-info: {{ . }};
+    {{- else }}
+    {{- with site.Params.colors.info }}
+    --bs-info: {{ . }};
+    {{- end }}
+    {{- end }}
+    {{- with site.Params.colors_dark.warning }}
+    --bs-warning: {{ . }};
+    {{- else }}
+    {{- with site.Params.colors.warning }}
+    --bs-warning: {{ . }};
+    {{- end }}
+    {{- end }}
+    {{- with site.Params.colors_dark.danger }}
+    --bs-danger: {{ . }};
+    {{- else }}
+    {{- with site.Params.colors.danger }}
+    --bs-danger: {{ . }};
+    {{- end }}
+    {{- end }}
+    {{- with site.Params.colors_dark.secondary }}
+    --bs-secondary: {{ . }};
+    {{- else }}
+    {{- with site.Params.colors.secondary }}
+    --bs-secondary: {{ . }};
+    {{- end }}
+    {{- end }}
+    {{- with site.Params.colors_dark.light }}
+    --bs-light: {{ . }};
+    {{- else }}
+    {{- with site.Params.colors.light }}
+    --bs-light: {{ . }};
+    {{- end }}
+    {{- end }}
+    {{- with site.Params.colors_dark.dark }}
+    --bs-dark: {{ . }};
+    {{- else }}
+    {{- with site.Params.colors.dark }}
+    --bs-dark: {{ . }};
+    {{- end }}
+    {{- end }}
+    
+    /* Dark mode link colors default to primary */
+    --bs-link-color: var(--bs-primary);
+    --bs-link-hover-color: var(--bs-primary);
+  }
+  
+  /* Apply custom colors to Bootstrap components */
+  .btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+  }
+  
+  .btn-success {
+    background-color: var(--bs-success);
+    border-color: var(--bs-success);
+  }
+  
+  .btn-danger {
+    background-color: var(--bs-danger);
+    border-color: var(--bs-danger);
+  }
+  
+  .btn-warning {
+    background-color: var(--bs-warning);
+    border-color: var(--bs-warning);
+  }
+  
+  .btn-info {
+    background-color: var(--bs-info);
+    border-color: var(--bs-info);
+  }
+  
+  .alert-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: white;
+  }
+  
+  .alert-success {
+    background-color: var(--bs-success);
+    border-color: var(--bs-success);
+    color: white;
+  }
+  
+  .alert-danger {
+    background-color: var(--bs-danger);
+    border-color: var(--bs-danger);
+    color: white;
+  }
+  
+  .alert-warning {
+    background-color: var(--bs-warning);
+    border-color: var(--bs-warning);
+    color: #212529;
+  }
+  
+  .alert-info {
+    background-color: var(--bs-info);
+    border-color: var(--bs-info);
+    color: white;
+  }
+  
+  .badge.bg-primary {
+    background-color: var(--bs-primary) !important;
+  }
+  
+  .badge.bg-success {
+    background-color: var(--bs-success) !important;
+  }
+  
+  .badge.bg-danger {
+    background-color: var(--bs-danger) !important;
+  }
+  
+  .badge.bg-warning {
+    background-color: var(--bs-warning) !important;
+  }
+  
+  .badge.bg-info {
+    background-color: var(--bs-info) !important;
+  }
+  
+  .text-primary {
+    color: var(--bs-primary) !important;
+  }
+  
+  .text-success {
+    color: var(--bs-success) !important;
+  }
+  
+  .text-danger {
+    color: var(--bs-danger) !important;
+  }
+  
+  .text-warning {
+    color: var(--bs-warning) !important;
+  }
+  
+  .text-info {
+    color: var(--bs-info) !important;
+  }
+  
+  .bg-primary {
+    background-color: var(--bs-primary) !important;
+  }
+  
+  .bg-success {
+    background-color: var(--bs-success) !important;
+  }
+  
+  .bg-danger {
+    background-color: var(--bs-danger) !important;
+  }
+  
+  .bg-warning {
+    background-color: var(--bs-warning) !important;
+  }
+  
+  .bg-info {
+    background-color: var(--bs-info) !important;
+  }
+  
+  .border-primary {
+    border-color: var(--bs-primary) !important;
+  }
+  
+  .border-success {
+    border-color: var(--bs-success) !important;
+  }
+  
+  .border-danger {
+    border-color: var(--bs-danger) !important;
+  }
+  
+  .border-warning {
+    border-color: var(--bs-warning) !important;
+  }
+  
+  .border-info {
+    border-color: var(--bs-info) !important;
+  }
+  
+  /* Pagination styles */
+  .pagination .page-item.active .page-link {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: white;
+  }
+  
+  .pagination .page-link {
+    color: var(--bs-primary);
+  }
+  
+  .pagination .page-link:hover {
+    color: var(--bs-primary);
+    opacity: 0.8;
+  }
+  
+  .pagination .page-link:focus {
+    outline-color: var(--bs-primary);
+  }
+</style>
+{{- end -}}

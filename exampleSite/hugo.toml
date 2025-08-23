@@ -27,6 +27,28 @@ pagerSize = 5
 
 [params]
 
+# Color customization (optional)
+# You can override Bootstrap's color scheme
+[params.colors]
+primary = "#7c3aed"    # Purple as main brand color
+success = "#10b981"    # Green for success
+info = "#0ea5e9"       # Blue for informational elements
+warning = "#f59e0b"    # Amber for warnings
+danger = "#ef4444"     # Red for errors
+# secondary = "#6c757d" # Optional: secondary color
+# light = "#f8f9fa"     # Optional: light backgrounds
+# dark = "#343a40"      # Optional: dark elements
+
+# Dark mode color overrides (optional)
+# If not specified, dark mode will use the same colors as light mode
+# Uncomment to customize dark mode colors differently
+# [params.colors_dark]
+# primary = "#9f6fef"    # Lighter purple for dark mode
+# success = "#10b981"    # Keep same green
+# info = "#0ea5e9"       # Keep same blue
+# warning = "#f59e0b"    # Keep same amber
+# danger = "#ef4444"     # Keep same red
+
 darkMode = true
 dateFormat = "January 2, 2006"
 description = "A demo blog showcasing the Bootstrap Blog theme for Hugo"
