@@ -1,0 +1,16 @@
+{{ $posts := where .Site.RegularPages "Type" "in" (slice "posts" "post") }}
+{{ if $posts }}
+<div class="sidebar-module">
+    <h4>{{ i18n "archives" }}</h4>
+    <ul>
+        {{ range ($posts.GroupByDate "January 2006") }}
+        <li>
+            <a href="{{ "/posts/" | relLangURL }}#{{ .Key | urlize }}" class="text-decoration-none">
+                {{ .Key }}
+            </a>
+            <span class="text-muted">({{ len .Pages }})</span>
+        </li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}

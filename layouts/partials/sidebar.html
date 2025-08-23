@@ -1,0 +1,29 @@
+<div class="sidebar">
+    {{ $sidebarModules := .Site.Params.sidebarModules | default (slice "search" "categories" "tags" "recent" "archives") }}
+    
+    {{ range $module := $sidebarModules }}
+        {{ if eq $module "search" }}
+            {{ partial "sidebar/search.html" $ }}
+        {{ else if eq $module "categories" }}
+            {{ partial "sidebar/categories.html" $ }}
+        {{ else if eq $module "tags" }}
+            {{ partial "sidebar/tags.html" $ }}
+        {{ else if eq $module "recent" }}
+            {{ partial "sidebar/recent.html" $ }}
+        {{ else if eq $module "archives" }}
+            {{ partial "sidebar/archives.html" $ }}
+        {{ else if eq $module "profile" }}
+            {{ partial "sidebar/profile.html" $ }}
+        {{ else if eq $module "toc" }}
+            {{ if .IsPage }}
+                {{ partial "sidebar/toc.html" $ }}
+            {{ end }}
+        {{ else if eq $module "social" }}
+            {{ partial "sidebar/social.html" $ }}
+        {{ else if eq $module "related" }}
+            {{ if .IsPage }}
+                {{ partial "sidebar/related.html" $ }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+</div>

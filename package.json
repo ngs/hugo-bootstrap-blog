@@ -1,0 +1,36 @@
+{
+  "name": "hugo-bootstrap-blog",
+  "version": "1.0.0",
+  "description": "A clean, responsive Hugo theme for blogging with Bootstrap 5.3",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:scss && npm run build:js",
+    "build:scss": "sass assets/scss/main.scss static/css/main.css --style compressed",
+    "build:js": "mkdir -p static/js && cp assets/js/*.js static/js/",
+    "watch": "npm run watch:scss",
+    "watch:scss": "sass assets/scss/main.scss static/css/main.css --watch",
+    "screenshot": "playwright test --project=screenshot",
+    "test": "playwright test",
+    "dev": "hugo server --source exampleSite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngs/hugo-bootstrap-blog.git"
+  },
+  "keywords": [
+    "hugo",
+    "theme",
+    "blog",
+    "bootstrap"
+  ],
+  "author": "Atsushi Nagase",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ngs/hugo-bootstrap-blog/issues"
+  },
+  "homepage": "https://github.com/ngs/hugo-bootstrap-blog#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "sass": "^1.69.0"
+  }
+}

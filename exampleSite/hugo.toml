@@ -1,0 +1,74 @@
+baseURL = "https://example.com/"
+defaultContentLanguage = "en"
+title = "Bootstrap Blog Demo"
+
+# Use parent theme via Hugo Modules
+[module]
+[[module.imports]]
+path = "go.ngs.io/hugo-bootstrap-blog"
+
+[languages]
+[languages.en]
+
+contentDir = "content/en"
+languageCode = "en"
+languageName = "English"
+title = "Bootstrap Blog Demo"
+weight = 1
+[languages.ja]
+contentDir = "content/ja"
+languageCode = "ja"
+languageName = "日本語"
+title = "Bootstrap Blog デモ"
+weight = 2
+
+[pagination]
+pagerSize = 5
+
+[params]
+
+darkMode = true
+dateFormat = "January 2, 2006"
+description = "A demo blog showcasing the Bootstrap Blog theme for Hugo"
+enableSearch = true
+recentPostsCount = 5
+showHeroSection = true
+showReadingTime = true
+sidebarModules = ["search", "categories", "tags", "recent", "archives"] # "toc" removed
+sidebarPosition = "right"
+[params.author]
+
+avatar = "/images/avatar.jpg"
+bio = "Web developer and open source enthusiast."
+email = "john.doe@example.com"
+name = "John Doe"
+[params.social]
+github = "https://github.com/example"
+linkedin = "https://linkedin.com/in/example"
+twitter = "https://twitter.com/example"
+
+[menu]
+[[menu.main]]
+
+name = "Home"
+url = "/"
+weight = 1
+[[menu.main]]
+name = "About"
+url = "/about/"
+weight = 2
+
+[markup]
+[markup.highlight]
+
+style = "monokai"
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[taxonomies]
+category = "categories"
+tag = "tags"

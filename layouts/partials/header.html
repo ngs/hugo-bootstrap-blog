@@ -1,0 +1,43 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{{ "/" | relLangURL }}">{{ .Site.Title }}</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{{ i18n "toggleNavigation" }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {{ range .Site.Menus.main }}
+                    <li class="nav-item">
+                        <a class="nav-link{{ if $.IsMenuCurrent "main" . }} active{{ end }}" href="{{ .URL | relLangURL }}">
+                            {{ .Name }}
+                        </a>
+                    </li>
+                    {{ end }}
+                    
+                    {{ if hugo.IsMultilingual }}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-globe"></i> {{ .Language.LanguageName }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            {{ range .Translations }}
+                            <li><a class="dropdown-item" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
+                            {{ end }}
+                            {{ if not .Translations }}
+                                {{ range .Site.Languages }}
+                                    {{ if ne $.Site.Language.Lang .Lang }}
+                                    <li><a class="dropdown-item" href="{{ .Lang | relLangURL }}">{{ .LanguageName }}</a></li>
+                                    {{ end }}
+                                {{ end }}
+                            {{ end }}
+                        </ul>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

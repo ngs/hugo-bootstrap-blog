@@ -1,0 +1,193 @@
+// Dark mode styles
+[data-bs-theme="dark"] {
+  // Background colors
+  background-color: #1a1a1a;
+  color: #e9ecef;
+  
+  // Blog post styles
+  .blog-post {
+    .post-meta {
+      color: #adb5bd;
+    }
+    
+    .post-content {
+      pre {
+        background-color: #2d2d2d;
+        color: #e9ecef;
+      }
+      
+      blockquote {
+        border-left-color: #495057;
+        color: #adb5bd;
+      }
+      
+      code {
+        background-color: #2d2d2d;
+        color: #e9ecef;
+      }
+    }
+  }
+  
+  // Sidebar
+  .sidebar {
+    .sidebar-module {
+      background-color: #2d2d2d;
+      
+      .category-count {
+        background-color: #495057;
+        color: #e9ecef;
+      }
+    }
+  }
+  
+  // Links
+  a {
+    color: #66b3ff;
+    
+    &:hover {
+      color: #4da3ff;
+    }
+  }
+  
+  // Cards
+  .card {
+    background-color: #2d2d2d;
+    border-color: #495057;
+  }
+  
+  // Forms
+  .form-control {
+    background-color: #2d2d2d;
+    border-color: #495057;
+    color: #e9ecef;
+    
+    &:focus {
+      background-color: #2d2d2d;
+      border-color: #66b3ff;
+      color: #e9ecef;
+    }
+    
+    &::placeholder {
+      color: #6c757d;
+    }
+  }
+  
+  // Buttons
+  .btn-outline-secondary {
+    color: #adb5bd;
+    border-color: #495057;
+    
+    &:hover {
+      background-color: #495057;
+      border-color: #495057;
+      color: #e9ecef;
+    }
+  }
+  
+  // Navigation
+  .navbar {
+    background-color: #2d2d2d !important;
+    
+    .navbar-brand,
+    .nav-link {
+      color: #e9ecef !important;
+      
+      &:hover {
+        color: #66b3ff !important;
+      }
+    }
+  }
+  
+  // Footer
+  footer {
+    background-color: #2d2d2d;
+    
+    .social-links a {
+      color: #adb5bd;
+      
+      &:hover {
+        color: #e9ecef;
+      }
+    }
+  }
+  
+  // Pagination
+  .pagination {
+    .page-link {
+      background-color: #2d2d2d;
+      border-color: #495057;
+      color: #66b3ff;
+      
+      &:hover {
+        background-color: #495057;
+        border-color: #495057;
+        color: #e9ecef;
+      }
+    }
+    
+    .page-item.active .page-link {
+      background-color: #0066cc;
+      border-color: #0066cc;
+    }
+    
+    .page-item.disabled .page-link {
+      background-color: #2d2d2d;
+      border-color: #495057;
+      color: #6c757d;
+    }
+  }
+  
+  // Tables
+  .table {
+    color: #e9ecef;
+    
+    th {
+      border-color: #495057;
+    }
+    
+    td {
+      border-color: #495057;
+    }
+  }
+  
+  // Code highlighting
+  .highlight {
+    background-color: #2d2d2d;
+    
+    pre {
+      background-color: #2d2d2d;
+    }
+  }
+}
+
+// Dark mode toggle button
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  background-color: #fff;
+  border: 2px solid #dee2e6;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+  
+  i {
+    font-size: 1.25rem;
+  }
+  
+  [data-bs-theme="dark"] & {
+    background-color: #2d2d2d;
+    border-color: #495057;
+    color: #e9ecef;
+  }
+}

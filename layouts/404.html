@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="display-1">404</h1>
+            <h2 class="mb-4">{{ i18n "pageNotFound" }}</h2>
+            <p class="lead mb-5">{{ i18n "pageNotFoundMessage" }}</p>
+            <a href="{{ "/" | relLangURL }}" class="btn btn-primary">
+                <i class="bi bi-house"></i> {{ i18n "backToHome" }}
+            </a>
+        </div>
+    </div>
+</div>
+{{ end }}

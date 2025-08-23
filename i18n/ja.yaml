@@ -1,0 +1,59 @@
+# Navigation
+home: "ホーム"
+posts: "記事"
+categories: "カテゴリー"
+tags: "タグ"
+about: "このサイトについて"
+toggleNavigation: "ナビゲーション切替"
+
+# Common
+readMore: "続きを読む"
+minRead: "分で読めます"
+lastUpdated: "最終更新"
+previous: "前へ"
+next: "次へ"
+pagination: "ページネーション"
+skipToContent: "コンテンツへスキップ"
+toggleDarkMode: "ダークモード切替"
+allRightsReserved: "All rights reserved"
+poweredBy: "Powered by"
+and: "と"
+
+# Posts
+latestPosts: "最新の記事"
+previousPost: "前の記事"
+nextPost: "次の記事"
+relatedPosts: "関連記事"
+tableOfContents: "目次"
+comments: "コメント"
+
+# Sidebar
+search: "検索"
+searchPlaceholder: "記事を検索..."
+recentPosts: "最近の記事"
+archives: "アーカイブ"
+aboutAuthor: "著者について"
+contactMe: "お問い合わせ"
+followUs: "フォロー"
+
+# 404 Page
+pageNotFound: "ページが見つかりません"
+pageNotFoundMessage: "申し訳ございません。お探しのページが見つかりませんでした。"
+backToHome: "ホームに戻る"
+
+# Footer
+copyright: "Copyright"
+
+# Date formats
+january: "1月"
+february: "2月"
+march: "3月"
+april: "4月"
+may: "5月"
+june: "6月"
+july: "7月"
+august: "8月"
+september: "9月"
+october: "10月"
+november: "11月"
+december: "12月"

@@ -1,0 +1,57 @@
+<footer class="footer mt-auto">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-muted">
+                    &copy; {{ now.Year }} {{ .Site.Title }}. 
+                    {{ i18n "allRightsReserved" }}
+                </p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <div class="social-links">
+                    {{ with .Site.Params.social.twitter }}
+                    <a href="{{ . }}" target="_blank" rel="noopener" aria-label="Twitter">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                    {{ end }}
+                    {{ with .Site.Params.social.github }}
+                    <a href="{{ . }}" target="_blank" rel="noopener" aria-label="GitHub">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    {{ end }}
+                    {{ with .Site.Params.social.linkedin }}
+                    <a href="{{ . }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    {{ end }}
+                    {{ with .Site.Params.social.facebook }}
+                    <a href="{{ . }}" target="_blank" rel="noopener" aria-label="Facebook">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    {{ end }}
+                    {{ with .Site.Params.social.instagram }}
+                    <a href="{{ . }}" target="_blank" rel="noopener" aria-label="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    {{ end }}
+                    {{ with .Site.Params.social.youtube }}
+                    <a href="{{ . }}" target="_blank" rel="noopener" aria-label="YouTube">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                    {{ end }}
+                    
+                    <a href="{{ "/index.xml" | relLangURL }}" target="_blank" rel="noopener" aria-label="RSS">
+                        <i class="bi bi-rss"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12 text-center text-muted small">
+                {{ i18n "poweredBy" }} <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 
+                {{ i18n "and" }} 
+                <a href="https://github.com/ngs/hugo-bootstrap-blog" target="_blank" rel="noopener">Bootstrap Blog</a>
+            </div>
+        </div>
+    </div>
+</footer>

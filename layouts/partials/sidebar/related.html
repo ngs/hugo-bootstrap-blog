@@ -1,0 +1,16 @@
+{{ $related := .Site.RegularPages.Related . | first 5 }}
+{{ if $related }}
+<div class="sidebar-module">
+    <h4>{{ i18n "relatedPosts" }}</h4>
+    <ul>
+        {{ range $related }}
+        <li>
+            <a href="{{ .Permalink }}" class="text-decoration-none">{{ .Title }}</a>
+            <small class="text-muted d-block">
+                {{ .Date.Format (.Site.Params.dateFormat | default "Jan 2, 2006") }}
+            </small>
+        </li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}

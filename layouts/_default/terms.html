@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div class="row">
+    <div class="col-12">
+        <h1 class="page-title mb-4">{{ .Title }}</h1>
+        
+        {{ with .Content }}
+        <div class="content mb-4">
+            {{ . }}
+        </div>
+        {{ end }}
+        
+        <div class="terms-list">
+            {{ range .Data.Terms.Alphabetical }}
+            <div class="term-item mb-3">
+                <h3>
+                    <a href="{{ .Page.Permalink }}" class="text-decoration-none">
+                        {{ .Page.Title }}
+                        <span class="badge bg-secondary">{{ .Count }}</span>
+                    </a>
+                </h3>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,21 @@
+{{ with .Site.Params.author }}
+<div class="sidebar-module">
+    <h4>{{ i18n "aboutAuthor" }}</h4>
+    <div class="author-profile">
+        {{ with .avatar }}
+        <img src="{{ . | relURL }}" alt="{{ $.Site.Params.author.name }}" class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
+        {{ end }}
+        <h5>{{ .name }}</h5>
+        {{ with .bio }}
+        <p class="text-muted small">{{ . }}</p>
+        {{ end }}
+        {{ with .email }}
+        <p>
+            <a href="mailto:{{ . }}" class="text-decoration-none">
+                <i class="bi bi-envelope"></i> {{ i18n "contactMe" }}
+            </a>
+        </p>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

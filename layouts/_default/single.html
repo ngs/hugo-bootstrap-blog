@@ -1,0 +1,106 @@
+{{ define "main" }}
+<article class="blog-post single-post">
+    <header class="post-header mb-4">
+        <h1 class="post-title">{{ .Title }}</h1>
+        
+        <div class="post-meta">
+            <span class="meta-item">
+                <i class="bi bi-calendar"></i>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">
+                    {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") }}
+                </time>
+            </span>
+            
+            {{ if ne .Date .Lastmod }}
+            <span class="meta-item">
+                <i class="bi bi-arrow-clockwise"></i>
+                {{ i18n "lastUpdated" }}
+                <time datetime="{{ .Lastmod.Format "2006-01-02" }}">
+                    {{ .Lastmod.Format (.Site.Params.dateFormat | default "January 2, 2006") }}
+                </time>
+            </span>
+            {{ end }}
+            
+            {{ if .Site.Params.showReadingTime }}
+            <span class="meta-item">
+                <i class="bi bi-clock"></i>
+                {{ .ReadingTime }} {{ i18n "minRead" }}
+            </span>
+            {{ end }}
+            
+            {{ with .Params.author }}
+            <span class="meta-item">
+                <i class="bi bi-person"></i>
+                {{ . }}
+            </span>
+            {{ end }}
+            
+            {{ with .Params.categories }}
+            <span class="meta-item">
+                <i class="bi bi-folder"></i>
+                {{ range $i, $e := . }}
+                    {{- if $i -}}, {{ end }}
+                    <a href="{{ "categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+                {{- end }}
+            </span>
+            {{ end }}
+        </div>
+    </header>
+    
+    {{ if .Params.image }}
+    <div class="featured-image mb-4">
+        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="img-fluid">
+    </div>
+    {{ end }}
+    
+    {{ if .Params.toc }}
+    <div class="post-toc card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ i18n "tableOfContents" }}</h5>
+            {{ .TableOfContents }}
+        </div>
+    </div>
+    {{ end }}
+    
+    <div class="post-content">
+        {{ .Content }}
+    </div>
+    
+    {{ with .Params.tags }}
+    <div class="post-tags mt-4">
+        <i class="bi bi-tags"></i>
+        {{ range $i, $e := . }}
+            <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}" class="badge bg-secondary text-decoration-none">{{ . }}</a>
+        {{- end }}
+    </div>
+    {{ end }}
+    
+    <nav class="post-navigation mt-5">
+        <div class="row">
+            <div class="col-6">
+                {{ with .PrevInSection }}
+                <a href="{{ .Permalink }}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> {{ i18n "previousPost" }}
+                    <span class="d-none d-md-block small mt-1">{{ .Title }}</span>
+                </a>
+                {{ end }}
+            </div>
+            <div class="col-6 text-end">
+                {{ with .NextInSection }}
+                <a href="{{ .Permalink }}" class="btn btn-outline-secondary">
+                    {{ i18n "nextPost" }} <i class="bi bi-arrow-right"></i>
+                    <span class="d-none d-md-block small mt-1">{{ .Title }}</span>
+                </a>
+                {{ end }}
+            </div>
+        </div>
+    </nav>
+    
+    {{ if .Site.Params.comments }}
+    <div class="comments mt-5">
+        <h3>{{ i18n "comments" }}</h3>
+        <!-- Add your comment system here (Disqus, utterances, etc.) -->
+    </div>
+    {{ end }}
+</article>
+{{ end }}

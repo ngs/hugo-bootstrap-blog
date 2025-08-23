@@ -1,0 +1,22 @@
+{{ $tags := .Site.Taxonomies.tags }}
+{{ if $tags }}
+<div class="sidebar-module">
+    <h4>{{ i18n "tags" }}</h4>
+    <div class="tag-cloud">
+        {{ range $name, $taxonomy := $tags }}
+            {{ $count := len $taxonomy }}
+            {{ $size := "tag-sm" }}
+            {{ if gt $count 5 }}
+                {{ $size = "tag-md" }}
+            {{ end }}
+            {{ if gt $count 10 }}
+                {{ $size = "tag-lg" }}
+            {{ end }}
+            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" 
+               class="tag {{ $size }} badge bg-secondary text-decoration-none">
+                {{ $name }}
+            </a>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

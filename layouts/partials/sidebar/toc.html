@@ -1,0 +1,8 @@
+{{ if and .IsPage .TableOfContents }}
+<div class="sidebar-module toc">
+    <h4>{{ i18n "tableOfContents" }}</h4>
+    <nav>
+        {{ .TableOfContents }}
+    </nav>
+</div>
+{{ end }}

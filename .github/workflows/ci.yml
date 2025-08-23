@@ -1,0 +1,154 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.120.0'
+        extended: true
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build SCSS
+      run: npm run build:scss
+    
+    - name: Build example site
+      run: hugo -s exampleSite --themesDir=../..
+    
+    - name: HTML validation
+      run: |
+        npm install -g html-validate
+        html-validate exampleSite/public/**/*.html || true
+  
+  lighthouse:
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.120.0'
+        extended: true
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build SCSS
+      run: npm run build:scss
+    
+    - name: Build example site
+      run: hugo -s exampleSite --themesDir=../.. --baseURL="https://localhost:8080/"
+    
+    - name: Serve site and run Lighthouse
+      run: |
+        npx serve -l 8080 exampleSite/public &
+        sleep 5
+        npx lighthouse https://localhost:8080 \
+          --output=json \
+          --output-path=./lighthouse-report.json \
+          --chrome-flags="--headless --no-sandbox" \
+          --only-categories=performance,accessibility,best-practices,seo
+    
+    - name: Check Lighthouse scores
+      run: |
+        node -e "
+        const report = require('./lighthouse-report.json');
+        const scores = {
+          performance: report.categories.performance.score * 100,
+          accessibility: report.categories.accessibility.score * 100,
+          'best-practices': report.categories['best-practices'].score * 100,
+          seo: report.categories.seo.score * 100
+        };
+        console.log('Lighthouse Scores:', scores);
+        
+        // Check if scores meet requirements
+        if (scores.performance < 95) {
+          console.error('Performance score below 95');
+          process.exit(1);
+        }
+        if (scores.accessibility < 95) {
+          console.error('Accessibility score below 95');
+          process.exit(1);
+        }
+        if (scores['best-practices'] < 95) {
+          console.error('Best practices score below 95');
+          process.exit(1);
+        }
+        if (scores.seo < 100) {
+          console.error('SEO score below 100');
+          process.exit(1);
+        }
+        "
+  
+  screenshot:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.120.0'
+        extended: true
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright
+      run: npx playwright install --with-deps chromium
+    
+    - name: Build SCSS
+      run: npm run build:scss
+    
+    - name: Generate screenshots
+      run: npm run screenshot
+    
+    - name: Commit screenshots
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add images/*.png
+        git diff --staged --quiet || git commit -m "Update screenshots [skip ci]"
+    
+    - name: Push changes
+      if: github.event_name == 'push'
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}

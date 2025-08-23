@@ -1,0 +1,16 @@
+{{ $recentPosts := first (.Site.Params.recentPostsCount | default 5) (where .Site.RegularPages "Type" "in" (slice "posts" "post")) }}
+{{ if $recentPosts }}
+<div class="sidebar-module">
+    <h4>{{ i18n "recentPosts" }}</h4>
+    <ul>
+        {{ range $recentPosts }}
+        <li>
+            <a href="{{ .Permalink }}" class="text-decoration-none">{{ .Title }}</a>
+            <small class="text-muted d-block">
+                {{ .Date.Format (.Site.Params.dateFormat | default "Jan 2, 2006") }}
+            </small>
+        </li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}

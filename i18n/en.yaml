@@ -1,0 +1,59 @@
+# Navigation
+home: "Home"
+posts: "Posts"
+categories: "Categories"
+tags: "Tags"
+about: "About"
+toggleNavigation: "Toggle navigation"
+
+# Common
+readMore: "Read more"
+minRead: "min read"
+lastUpdated: "Last updated"
+previous: "Previous"
+next: "Next"
+pagination: "Pagination"
+skipToContent: "Skip to content"
+toggleDarkMode: "Toggle dark mode"
+allRightsReserved: "All rights reserved"
+poweredBy: "Powered by"
+and: "and"
+
+# Posts
+latestPosts: "Latest Posts"
+previousPost: "Previous Post"
+nextPost: "Next Post"
+relatedPosts: "Related Posts"
+tableOfContents: "Table of Contents"
+comments: "Comments"
+
+# Sidebar
+search: "Search"
+searchPlaceholder: "Search posts..."
+recentPosts: "Recent Posts"
+archives: "Archives"
+aboutAuthor: "About Author"
+contactMe: "Contact me"
+followUs: "Follow Us"
+
+# 404 Page
+pageNotFound: "Page Not Found"
+pageNotFoundMessage: "Sorry, the page you are looking for could not be found."
+backToHome: "Back to Home"
+
+# Footer
+copyright: "Copyright"
+
+# Date formats
+january: "January"
+february: "February"
+march: "March"
+april: "April"
+may: "May"
+june: "June"
+july: "July"
+august: "August"
+september: "September"
+october: "October"
+november: "November"
+december: "December"
