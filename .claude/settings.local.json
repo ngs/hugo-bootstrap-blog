@@ -11,7 +11,8 @@
       "Bash(cp:*)",
       "Bash(curl:*)",
       "Bash(grep:*)",
-      "Bash(HUGO_MODULE_PROXY=\"\" hugo server)"
+      "Bash(HUGO_MODULE_PROXY=\"\" hugo server)",
+      "Bash(sed:*)"
     ],
     "deny": [],
     "ask": []

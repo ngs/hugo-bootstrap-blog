@@ -107,15 +107,18 @@ Configure which modules appear in the sidebar:
 ```
 
 Available modules:
-- `search` - Search box
-- `profile` - Author profile
-- `categories` - Categories list
-- `tags` - Tag cloud
-- `recent` - Recent posts
-- `archives` - Post archives
-- `social` - Social links
+- `search` - Search box with live search functionality
+- `profile` - Author profile with avatar and bio
+- `categories` - Categories list with post count
+- `tags` - Tag cloud with weighted sizes
+- `recent` - Recent posts list
+- `archives` - Monthly/yearly post archives
+- `social` - Social media links
 - `toc` - Table of contents (single pages only)
 - `related` - Related posts (single pages only)
+- `newsletter` - Newsletter subscription form
+- `popular` - Popular/featured posts with thumbnails
+- `advertisement` - Advertisement space placeholder
 
 ### Author Information
 
@@ -137,6 +140,23 @@ Available modules:
   facebook = ""
   instagram = ""
   youtube = ""
+```
+
+### Advertisement Module
+
+To enable advertisements in the sidebar:
+
+```toml
+[params.advertisement]
+  enabled = true
+  code = """
+    <!-- Your ad code here -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-xxxxxxxxxx"
+         data-ad-slot="xxxxxxxxxx"
+         data-ad-format="auto"></ins>
+  """
 ```
 
 ### Menu Configuration

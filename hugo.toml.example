@@ -1,0 +1,144 @@
+# Theme configuration file
+# This file is meant to be copied to the root of your Hugo site
+
+baseURL = "https://example.com/"
+languageCode = "en"
+defaultContentLanguage = "en"
+title = "Bootstrap Blog Theme"
+theme = "hugo-bootstrap-blog"
+
+[pagination]
+  pagerSize = 10
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight = 1
+    contentDir = "content/en"
+    [languages.en.params]
+      description = "A modern blog built with Hugo and Bootstrap"
+  
+  [languages.ja]
+    languageName = "日本語"
+    weight = 2
+    contentDir = "content/ja"
+    [languages.ja.params]
+      description = "Hugo と Bootstrap で構築されたモダンなブログ"
+
+[params]
+  # Site description for meta tags
+  description = "A modern blog built with Hugo and Bootstrap"
+  
+  # Enable dark mode toggle
+  darkMode = true
+  
+  # Sidebar configuration
+  sidebarPosition = "right" # Options: "left", "right"
+  sidebarModules = ["search", "categories", "tags", "recent", "archives"]
+  
+  # Number of recent posts to show in sidebar
+  recentPostsCount = 5
+  
+  # Enable search functionality
+  enableSearch = true
+  
+  # Date format
+  dateFormat = "January 2, 2006"
+  
+  # Reading time
+  showReadingTime = true
+  
+  # Author information
+  [params.author]
+    name = "Your Name"
+    bio = "A brief bio about yourself"
+    avatar = "/images/avatar.png"
+    email = "your.email@example.com"
+  
+  # Social links
+  [params.social]
+    twitter = "https://twitter.com/yourusername"
+    github = "https://github.com/yourusername"
+    linkedin = "https://linkedin.com/in/yourusername"
+    facebook = ""
+    instagram = ""
+    youtube = ""
+    
+  # SEO
+  [params.seo]
+    # Open Graph
+    ogImage = "/images/og-default.png"
+    twitterCard = "summary_large_image"
+    twitterSite = "@yourusername"
+
+# Menu configuration
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+  
+  [[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 3
+    
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 4
+  
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 5
+
+# Markup configuration
+[markup]
+  [markup.highlight]
+    style = "monokai"
+    lineNos = false
+    lineNumbersInTable = true
+    tabWidth = 2
+  
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+# Output formats
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+
+# RSS configuration
+[services]
+  [services.rss]
+    limit = 20
+
+# Taxonomies
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  author = "authors"
+
+# Privacy settings
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    respectDoNotTrack = true
+  [privacy.twitter]
+    enableDNT = true
+  [privacy.youtube]
+    privacyEnhanced = true

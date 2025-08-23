@@ -1,0 +1,22 @@
+{{- /* Advertisement Sidebar Module */ -}}
+{{- if site.Params.advertisement.enabled -}}
+<div class="sidebar-module advertisement-module">
+  <h4 class="mb-3 text-muted small text-uppercase">
+    {{ i18n "advertisement" | default "Advertisement" }}
+  </h4>
+  <div class="advertisement-placeholder">
+    {{- with site.Params.advertisement.code -}}
+      {{- . | safeHTML -}}
+    {{- else -}}
+      {{- /* Default placeholder for development */ -}}
+      <div class="bg-light border rounded p-4 text-center" style="min-height: 250px; display: flex; align-items: center; justify-content: center;">
+        <div>
+          <i class="bi bi-badge-ad fs-1 text-muted mb-2 d-block"></i>
+          <p class="text-muted small mb-0">Advertisement Space</p>
+          <p class="text-muted small">300x250</p>
+        </div>
+      </div>
+    {{- end -}}
+  </div>
+</div>
+{{- end -}}

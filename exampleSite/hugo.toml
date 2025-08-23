@@ -30,11 +30,11 @@ pagerSize = 5
 # Color customization (optional)
 # You can override Bootstrap's color scheme
 [params.colors]
-primary = "#7c3aed"    # Purple as main brand color
-success = "#10b981"    # Green for success
-info = "#0ea5e9"       # Blue for informational elements
-warning = "#f59e0b"    # Amber for warnings
-danger = "#ef4444"     # Red for errors
+danger = "#ef4444" # Red for errors
+info = "#0ea5e9" # Blue for informational elements
+primary = "#7c3aed" # Purple as main brand color
+success = "#10b981" # Green for success
+warning = "#f59e0b" # Amber for warnings
 # secondary = "#6c757d" # Optional: secondary color
 # light = "#f8f9fa"     # Optional: light backgrounds
 # dark = "#343a40"      # Optional: dark elements
@@ -42,8 +42,8 @@ danger = "#ef4444"     # Red for errors
 # Dark mode color overrides (optional)
 # If not specified, dark mode will use the same colors as light mode
 # Uncomment to customize dark mode colors differently
-# [params.colors_dark]
-# primary = "#9f6fef"    # Lighter purple for dark mode
+[params.colors_dark]
+primary = "#ee9357ff" # Lighter purple for dark mode
 # success = "#10b981"    # Keep same green
 # info = "#0ea5e9"       # Keep same blue
 # warning = "#f59e0b"    # Keep same amber
@@ -56,8 +56,15 @@ enableSearch = true
 recentPostsCount = 5
 showHeroSection = true
 showReadingTime = true
-sidebarModules = ["search", "categories", "tags", "recent", "archives"] # "toc" removed
+# Available sidebar modules: search, categories, tags, recent, archives, profile, toc, social, related, newsletter, popular, advertisement
+sidebarModules = ["search", "newsletter", "categories", "tags", "popular", "recent", "archives"]
 sidebarPosition = "right"
+
+# Advertisement configuration (optional)
+[params.advertisement]
+enabled = false # Set to true to enable advertisement
+# code = """<div>Your ad code here</div>"""  # Add your ad code
+
 [params.author]
 
 avatar = "/images/avatar.jpg"

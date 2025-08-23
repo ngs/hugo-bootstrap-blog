@@ -1,0 +1,34 @@
+{{- /* Popular Posts Sidebar Module */ -}}
+{{- $popularPosts := where .Site.RegularPages "Type" "posts" | first 5 -}}
+{{- if $popularPosts -}}
+<div class="sidebar-module popular-posts-module">
+  <h4 class="mb-3">
+    <i class="bi bi-fire me-2"></i>
+    {{ i18n "popular_posts" | default "Popular Posts" }}
+  </h4>
+  <ul class="list-unstyled">
+    {{- range $popularPosts -}}
+    <li class="mb-3">
+      <div class="d-flex">
+        {{- with .Params.featured_image -}}
+        <img src="{{ . }}" alt="{{ $.Title }}" class="me-2 rounded" style="width: 60px; height: 60px; object-fit: cover;">
+        {{- else -}}
+        <div class="me-2 bg-secondary bg-opacity-10 rounded d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; flex-shrink: 0;">
+          <i class="bi bi-file-text text-secondary"></i>
+        </div>
+        {{- end -}}
+        <div class="flex-grow-1">
+          <h6 class="mb-1 lh-sm">
+            <a href="{{ .RelPermalink }}" class="text-decoration-none">{{ .Title }}</a>
+          </h6>
+          <small class="text-muted">
+            <i class="bi bi-calendar3 me-1"></i>
+            {{ .Date.Format "Jan 2, 2006" }}
+          </small>
+        </div>
+      </div>
+    </li>
+    {{- end -}}
+  </ul>
+</div>
+{{- end -}}

@@ -1,5 +1,6 @@
 ---
 title: "About"
+url: "/about/"
 ---
 
 This is the about page for the Bootstrap Blog theme demo.

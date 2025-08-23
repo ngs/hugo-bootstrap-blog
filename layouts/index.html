@@ -48,12 +48,8 @@
                     {{ if .Params.image }}
                     <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="img-fluid mb-3">
                     {{ end }}
-                    
-                    {{ if .Description }}
-                        {{ .Description }}
-                    {{ else }}
-                        {{ .Summary }}
-                    {{ end }}
+
+                    {{ .Summary }}
                 </div>
                 
                 <a href="{{ .Permalink }}" class="read-more">

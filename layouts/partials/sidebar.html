@@ -1,29 +1,42 @@
 <div class="sidebar">
-    {{ $sidebarModules := .Site.Params.sidebarModules | default (slice "search" "categories" "tags" "recent" "archives") }}
-    
-    {{ range $module := $sidebarModules }}
-        {{ if eq $module "search" }}
-            {{ partial "sidebar/search.html" $ }}
-        {{ else if eq $module "categories" }}
-            {{ partial "sidebar/categories.html" $ }}
-        {{ else if eq $module "tags" }}
-            {{ partial "sidebar/tags.html" $ }}
-        {{ else if eq $module "recent" }}
-            {{ partial "sidebar/recent.html" $ }}
-        {{ else if eq $module "archives" }}
-            {{ partial "sidebar/archives.html" $ }}
-        {{ else if eq $module "profile" }}
-            {{ partial "sidebar/profile.html" $ }}
-        {{ else if eq $module "toc" }}
-            {{ if .IsPage }}
-                {{ partial "sidebar/toc.html" $ }}
-            {{ end }}
-        {{ else if eq $module "social" }}
-            {{ partial "sidebar/social.html" $ }}
-        {{ else if eq $module "related" }}
-            {{ if .IsPage }}
-                {{ partial "sidebar/related.html" $ }}
+    {{ $sidebarModules := $.Site.Params.sidebarmodules | default (slice "search" "categories" "tags" "recent" "archives") }}
+    {{ if $sidebarModules }}
+        {{ range $index, $module := $sidebarModules }}
+            {{ if eq $module "search" }}
+                {{ partial "sidebar/search.html" $ }}
+            {{ else if eq $module "categories" }}
+                {{ partial "sidebar/categories.html" $ }}
+            {{ else if eq $module "tags" }}
+                {{ partial "sidebar/tags.html" $ }}
+            {{ else if eq $module "recent" }}
+                {{ partial "sidebar/recent.html" $ }}
+            {{ else if eq $module "archives" }}
+                {{ partial "sidebar/archives.html" $ }}
+            {{ else if eq $module "profile" }}
+                {{ partial "sidebar/profile.html" $ }}
+            {{ else if eq $module "toc" }}
+                {{ if .IsPage }}
+                    {{ partial "sidebar/toc.html" $ }}
+                {{ end }}
+            {{ else if eq $module "social" }}
+                {{ partial "sidebar/social.html" $ }}
+            {{ else if eq $module "related" }}
+                {{ if .IsPage }}
+                    {{ partial "sidebar/related.html" $ }}
+                {{ end }}
+            {{ else if eq $module "newsletter" }}
+                {{ partial "sidebar/newsletter.html" $ }}
+            {{ else if eq $module "popular" }}
+                {{ partial "sidebar/popular.html" $ }}
+            {{ else if eq $module "advertisement" }}
+                {{ partial "sidebar/advertisement.html" $ }}
             {{ end }}
         {{ end }}
+    {{ else }}
+        <!-- No sidebar modules configured, using defaults -->
+        {{ partial "sidebar/categories.html" $ }}
+        {{ partial "sidebar/tags.html" $ }}
+        {{ partial "sidebar/recent.html" $ }}
+        {{ partial "sidebar/archives.html" $ }}
     {{ end }}
 </div>
