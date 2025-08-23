@@ -2,10 +2,10 @@
 // This file contains custom styles and theme overrides
 
 // Variables
-@import 'variables';
+@use 'variables' as *;
 
 // Dark mode styles
-@import 'dark-mode';
+@use 'dark-mode' as *;
 
 // Custom theme styles
 body {
