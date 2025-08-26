@@ -135,8 +135,21 @@ jobs:
     - name: Install Playwright
       run: npx playwright install --with-deps chromium
     
-    - name: Build SCSS
-      run: npm run build:scss
+    - name: Build assets
+      run: |
+        npm run build:scss
+        npm run build:js
+    
+    - name: Prepare exampleSite
+      run: |
+        mkdir -p exampleSite/static/css exampleSite/static/js exampleSite/static/images exampleSite/archetypes
+        cp -r static/css/* exampleSite/static/css/ || true
+        cp -r static/js/* exampleSite/static/js/ || true
+        cp -r archetypes/* exampleSite/archetypes/ || true
+        touch exampleSite/static/favicon.ico
+        touch exampleSite/static/logo.png
+        touch exampleSite/static/images/og-image.jpg
+        touch exampleSite/static/images/avatar.jpg
     
     - name: Generate screenshots
       run: npm run screenshot

@@ -14,6 +14,10 @@ module.exports = defineConfig({
   use: {
     baseURL: "http://localhost:1313",
     trace: "on-first-retry",
+    ignoreHTTPSErrors: true,
+    contextOptions: {
+      ignoreHTTPSErrors: true,
+    },
   },
 
   projects: [
@@ -37,5 +41,7 @@ module.exports = defineConfig({
     url: "http://localhost:1313",
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
+    stdout: 'pipe',
+    stderr: 'pipe',
   },
 });

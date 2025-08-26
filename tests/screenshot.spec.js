@@ -5,7 +5,7 @@ const path = require('path');
 test.describe('Screenshot Generation', () => {
   test('capture homepage screenshot', async ({ page }) => {
     // Navigate to homepage
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'domcontentloaded', timeout: 30000 });
     
     // Wait for content to load
     await page.waitForLoadState('networkidle');
