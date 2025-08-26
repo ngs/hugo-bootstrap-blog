@@ -11,7 +11,7 @@
     "watch:scss": "sass assets/scss/main.scss static/css/main.css --watch",
     "screenshot": "playwright test --project=screenshot",
     "test": "playwright test",
-    "dev": "hugo server --source exampleSite"
+    "dev": "hugo server --source exampleSite --themesDir=../.."
   },
   "repository": {
     "type": "git",

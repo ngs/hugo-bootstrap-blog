@@ -12,7 +12,8 @@
       "Bash(curl:*)",
       "Bash(grep:*)",
       "Bash(HUGO_MODULE_PROXY=\"\" hugo server)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": [],
     "ask": []
