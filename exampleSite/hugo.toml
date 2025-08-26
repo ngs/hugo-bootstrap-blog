@@ -71,6 +71,11 @@ avatar = "/images/avatar.jpg"
 bio = "Web developer and open source enthusiast."
 email = "john.doe@example.com"
 name = "John Doe"
+[params.seo]
+ogImage = "/images/og-image.jpg"
+twitterCard = "summary_large_image"
+twitterSite = "@example"
+
 [params.social]
 github = "https://github.com/example"
 linkedin = "https://linkedin.com/in/example"
