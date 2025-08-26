@@ -1,3 +1,3 @@
 module github.com/ngs/hugo-bootstrap-blog
 
-go 1.19
+go 1.23
