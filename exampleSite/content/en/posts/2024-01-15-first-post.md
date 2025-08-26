@@ -1,5 +1,6 @@
 ---
 title: "Getting Started with Bootstrap Blog"
+slug: "first-post"
 date: 2024-01-15T10:00:00Z
 description: "Learn how to get started with the Bootstrap Blog theme"
 categories: ["Tutorial"]

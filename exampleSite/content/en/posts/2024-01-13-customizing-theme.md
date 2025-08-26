@@ -1,5 +1,6 @@
 ---
 title: "Customizing the Bootstrap Blog Theme"
+slug: "customizing-theme"
 date: 2024-01-13T14:00:00Z
 description: "Learn how to customize the Bootstrap Blog theme to match your style"
 categories: ["Tutorial", "Customization"]

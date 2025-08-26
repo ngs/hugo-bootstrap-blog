@@ -1,5 +1,6 @@
 ---
 title: "Exploring Bootstrap 5.3 Features"
+slug: "bootstrap-5-features"
 date: 2024-01-19T14:00:00Z
 description: "Discover the powerful features of Bootstrap 5.3 for modern web development"
 categories: ["Web Development", "CSS"]

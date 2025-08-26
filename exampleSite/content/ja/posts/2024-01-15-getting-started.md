@@ -1,5 +1,6 @@
 ---
 title: "Bootstrap Blogテーマを始めよう"
+slug: "getting-started"
 date: 2024-01-15T10:00:00Z
 description: "Hugo用Bootstrap Blogテーマの使い方を学ぼう"
 categories: ["チュートリアル"]

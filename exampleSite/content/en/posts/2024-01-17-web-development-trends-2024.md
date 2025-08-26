@@ -1,5 +1,6 @@
 ---
 title: "Web Development Trends to Watch in 2024"
+slug: "web-development-trends-2024"
 date: 2024-01-17T11:00:00Z
 description: "Explore the latest trends and technologies shaping web development in 2024"
 categories: ["Web Development", "Technology"]

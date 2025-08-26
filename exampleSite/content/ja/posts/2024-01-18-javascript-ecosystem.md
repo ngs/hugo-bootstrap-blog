@@ -1,5 +1,6 @@
 ---
 title: "JavaScript エコシステム完全ガイド 2024"
+slug: "javascript-ecosystem"
 date: 2024-01-18T09:30:00Z
 description: "2024年のJavaScriptエコシステムの全体像と最新トレンドを解説"
 categories: ["プログラミング", "JavaScript"]

@@ -1,5 +1,6 @@
 ---
 title: "Hugoで始める静的サイト構築"
+slug: "hugo-introduction"
 date: 2024-01-20T10:00:00Z
 description: "世界最速の静的サイトジェネレーター、Hugoの紹介"
 categories: ["Hugo", "Web開発"]

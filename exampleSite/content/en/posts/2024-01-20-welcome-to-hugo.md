@@ -1,5 +1,6 @@
 ---
 title: "Welcome to Hugo"
+slug: "welcome-to-hugo"
 date: 2024-01-20T10:00:00Z
 description: "An introduction to Hugo, the world's fastest static site generator"
 categories: ["Hugo", "Web Development"]

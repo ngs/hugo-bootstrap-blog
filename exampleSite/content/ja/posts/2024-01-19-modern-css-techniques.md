@@ -1,5 +1,6 @@
 ---
 title: "モダンCSS実装テクニック2024"
+slug: "modern-css-techniques"
 date: 2024-01-19T14:00:00Z
 description: "2024年のWeb開発で使いたい最新のCSSテクニックを紹介"
 categories: ["Web開発", "CSS"]

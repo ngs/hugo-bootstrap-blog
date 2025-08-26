@@ -1,0 +1,57 @@
+{{- $year := .Get "year" -}}
+{{- $month := .Get "month" -}}
+{{- $day := .Get "day" -}}
+{{- $lang := .Get "lang" | default .Page.Language.Lang -}}
+
+{{- $posts := where (where site.RegularPages "Type" "posts") "Language.Lang" $lang -}}
+
+{{- if $year -}}
+  {{- $posts = where $posts "Date.Year" (int $year) -}}
+{{- end -}}
+
+{{- if $month -}}
+  {{- $posts = where $posts "Date.Month" (int $month) -}}
+{{- end -}}
+
+{{- if $day -}}
+  {{- $posts = where $posts "Date.Day" (int $day) -}}
+{{- end -}}
+
+{{- if $posts -}}
+  <div class="row">
+    {{- range $posts.ByDate.Reverse -}}
+      <div class="col-12 mb-4">
+        <article class="post-card h-100">
+          <div class="card-body">
+            <h2 class="card-title h4">
+              <a href="{{ .RelPermalink }}" class="text-decoration-none">{{ .Title }}</a>
+            </h2>
+            <div class="text-muted small mb-2">
+              <time datetime="{{ .Date.Format "2006-01-02" }}">
+                {{ .Date.Format "2006年1月2日" }}
+              </time>
+              {{- if .Params.author -}}
+                • {{ .Params.author }}
+              {{- end -}}
+            </div>
+            {{- if .Description -}}
+              <p class="card-text">{{ .Description }}</p>
+            {{- else -}}
+              <p class="card-text">{{ .Summary | truncate 200 }}</p>
+            {{- end -}}
+            <div class="mt-2">
+              {{- range .Params.categories -}}
+                <a href="{{ "categories/" | relLangURL }}{{ . | urlize }}/" class="badge bg-primary text-decoration-none me-1">{{ . }}</a>
+              {{- end -}}
+              {{- range .Params.tags -}}
+                <a href="{{ "t/" | relLangURL }}{{ . | urlize }}/" class="badge bg-secondary text-decoration-none me-1">{{ . }}</a>
+              {{- end -}}
+            </div>
+          </div>
+        </article>
+      </div>
+    {{- end -}}
+  </div>
+{{- else -}}
+  <p>該当する記事はありません。</p>
+{{- end -}}

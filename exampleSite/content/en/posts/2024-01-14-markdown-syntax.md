@@ -1,5 +1,6 @@
 ---
 title: "Markdown Syntax Guide"
+slug: "markdown-syntax"
 date: 2024-01-14T09:00:00Z
 description: "A comprehensive guide to Markdown syntax supported by this theme"
 categories: ["Tutorial", "Documentation"]

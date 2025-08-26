@@ -1,5 +1,6 @@
 ---
 title: "Mastering Markdown for Technical Writing"
+slug: "writing-in-markdown"
 date: 2024-01-18T09:30:00Z
 description: "A comprehensive guide to using Markdown effectively for technical documentation and blogging"
 categories: ["Writing", "Documentation"]
