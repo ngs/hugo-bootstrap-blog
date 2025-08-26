@@ -1,4 +1,4 @@
-baseURL = "https://example.com/"
+baseURL = "https://hugo-bootstrap-blog-demo.ngs.io/"
 defaultContentLanguage = "en"
 title = "Bootstrap Blog Demo"
 
