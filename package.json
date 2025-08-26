@@ -10,6 +10,7 @@
     "watch": "npm run watch:scss",
     "watch:scss": "sass assets/scss/main.scss static/css/main.css --watch",
     "screenshot": "playwright test --project=screenshot",
+    "screenshot:ci": "playwright test --project=screenshot --config=playwright.config.ci.js",
     "test": "playwright test",
     "dev": "hugo server --source exampleSite --themesDir=../.."
   },

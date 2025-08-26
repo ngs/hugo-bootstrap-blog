@@ -150,9 +150,16 @@ jobs:
         touch exampleSite/static/logo.png
         touch exampleSite/static/images/og-image.jpg
         touch exampleSite/static/images/avatar.jpg
+        cd exampleSite && hugo mod download
+    
+    - name: Start Hugo server
+      run: |
+        cd exampleSite && hugo server --themesDir=../.. &
+        sleep 5
+        curl -I http://localhost:1313 || true
     
     - name: Generate screenshots
-      run: npm run screenshot
+      run: npm run screenshot:ci
     
     - name: Commit screenshots
       run: |

@@ -33,3 +33,6 @@ Thumbs.db
 /exampleSite/public/
 /exampleSite/resources/
 /exampleSite/.hugo_build.lock
+
+/exampleSite/content/*/archives
+

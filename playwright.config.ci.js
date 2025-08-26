@@ -2,22 +2,20 @@
 const { defineConfig, devices } = require("@playwright/test");
 
 /**
+ * CI-specific configuration that doesn't start its own server
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
   testDir: "./tests",
-  fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: "html",
+  fullyParallel: false,
+  forbidOnly: true,
+  retries: 2,
+  workers: 1,
+  reporter: "list",
   use: {
     baseURL: "http://localhost:1313",
     trace: "on-first-retry",
     ignoreHTTPSErrors: true,
-    contextOptions: {
-      ignoreHTTPSErrors: true,
-    },
   },
 
   projects: [
@@ -35,16 +33,12 @@ module.exports = defineConfig({
       name: "mobile-screenshot",
       use: {
         ...devices["iPhone 12"],
+        launchOptions: {
+          args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+        },
       },
     },
   ],
 
-  webServer: {
-    command: "npm run dev",
-    port: 1313,
-    reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
-    stdout: 'pipe',
-    stderr: 'pipe',
-  },
+  // No webServer config - server is started externally in CI
 });

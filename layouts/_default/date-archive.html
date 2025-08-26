@@ -1,0 +1,87 @@
+{{ define "main" }}
+<div class="date-archive">
+    <h1 class="mb-4">
+        {{ if .Params.year }}
+            {{ if .Params.month }}
+                {{ if .Params.day }}
+                    {{/* Day archive */}}
+                    {{ i18n "archivesForDate" (dict "date" (printf "%d年%d月%d日" .Params.year .Params.month .Params.day)) | default (printf "Archives for %s %d, %d" (index $.Site.Data.months (printf "%d" .Params.month)) .Params.day .Params.year) }}
+                {{ else }}
+                    {{/* Month archive */}}
+                    {{ i18n "archivesForMonth" (dict "date" (printf "%d年%d月" .Params.year .Params.month)) | default (printf "Archives for %s %d" (index $.Site.Data.months (printf "%d" .Params.month)) .Params.year) }}
+                {{ end }}
+            {{ else }}
+                {{/* Year archive */}}
+                {{ i18n "archivesForYear" .Params.year | default (printf "Archives for %d" .Params.year) }}
+            {{ end }}
+        {{ else }}
+            {{ i18n "archives" | default "Archives" }}
+        {{ end }}
+    </h1>
+
+    <div class="posts-list">
+        {{ $paginator := .Paginate .Pages }}
+        {{ range $paginator.Pages }}
+            <article class="blog-post">
+                <h3 class="post-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h3>
+                
+                <div class="post-meta">
+                    <span class="meta-item">
+                        <i class="bi bi-calendar"></i>
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">
+                            {{ .Date.Format "January 2, 2006" }}
+                        </time>
+                    </span>
+                    
+                    {{ if .Params.author }}
+                    <span class="meta-item">
+                        <i class="bi bi-person"></i>
+                        {{ .Params.author }}
+                    </span>
+                    {{ else if .Site.Params.author.name }}
+                    <span class="meta-item">
+                        <i class="bi bi-person"></i>
+                        {{ .Site.Params.author.name }}
+                    </span>
+                    {{ end }}
+                    
+                    {{ if .Params.categories }}
+                    <span class="meta-item">
+                        <i class="bi bi-folder"></i>
+                        {{ range $i, $cat := .Params.categories }}
+                            {{- if $i }}, {{ end -}}
+                            <a href="{{ "categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+                        {{- end }}
+                    </span>
+                    {{ end }}
+                    
+                    {{ if .Site.Params.showReadingTime }}
+                    <span class="meta-item">
+                        <i class="bi bi-clock"></i>
+                        {{ .ReadingTime }} {{ i18n "minRead" | default "min read" }}
+                    </span>
+                    {{ end }}
+                </div>
+                
+                <div class="post-summary">
+                    {{ .Summary | truncate 200 }}
+                </div>
+                
+                <a href="{{ .RelPermalink }}" class="read-more">
+                    {{ i18n "readMore" | default "Read more" }} <i class="bi bi-arrow-right"></i>
+                </a>
+            </article>
+        {{ end }}
+    </div>
+    
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav aria-label="{{ i18n "pagination" | default "Pagination" }}">
+        <ul class="pagination justify-content-center">
+            {{ template "_internal/pagination.html" . }}
+        </ul>
+    </nav>
+    {{ end }}
+</div>
+{{ end }}

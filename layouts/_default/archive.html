@@ -1,0 +1,13 @@
+{{ define "main" }}
+<div class="archive-page">
+    <h1 class="mb-4">
+        {{ if i18n "archiveTitle" }}
+            {{ i18n "archiveTitle" .Title }}
+        {{ else }}
+            Archives: {{ .Title }}
+        {{ end }}
+    </h1>
+    
+    {{ .Content }}
+</div>
+{{ end }}

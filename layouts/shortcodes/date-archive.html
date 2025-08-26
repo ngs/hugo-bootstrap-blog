@@ -1,0 +1,65 @@
+{{/* Date-based archive shortcode */}}
+{{ $year := .Get "year" }}
+{{ $month := .Get "month" }}
+{{ $day := .Get "day" }}
+
+{{ $posts := where .Site.RegularPages "Type" "posts" }}
+
+{{/* Filter by year */}}
+{{ if $year }}
+    {{ $yearInt := int $year }}
+    {{ $posts = where $posts ".Date.Year" "eq" $yearInt }}
+    
+    {{/* Filter by month if provided */}}
+    {{ if $month }}
+        {{ $monthInt := int $month }}
+        {{ $posts = where $posts ".Date.Month" "eq" $monthInt }}
+        
+        {{/* Filter by day if provided */}}
+        {{ if $day }}
+            {{ $dayInt := int $day }}
+            {{ $posts = where $posts ".Date.Day" "eq" $dayInt }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+<div class="date-archive-posts">
+    {{ range $posts }}
+        <article class="blog-post mb-4">
+            <h3 class="post-title">
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h3>
+            
+            <div class="post-meta">
+                <span class="meta-item">
+                    <i class="bi bi-calendar"></i>
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">
+                        {{ .Date.Format "January 2, 2006" }}
+                    </time>
+                </span>
+                
+                {{ if .Params.categories }}
+                <span class="meta-item">
+                    <i class="bi bi-folder"></i>
+                    {{ range $i, $cat := .Params.categories }}
+                        {{- if $i }}, {{ end -}}
+                        <a href="{{ "categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+                    {{- end }}
+                </span>
+                {{ end }}
+            </div>
+            
+            <div class="post-summary">
+                {{ .Summary | plainify | truncate 200 }}
+            </div>
+            
+            <a href="{{ .RelPermalink }}" class="read-more">
+                Read more <i class="bi bi-arrow-right"></i>
+            </a>
+        </article>
+    {{ end }}
+    
+    {{ if not $posts }}
+        <p>No posts found for this date range.</p>
+    {{ end }}
+</div>

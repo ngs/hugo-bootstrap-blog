@@ -49,6 +49,12 @@ pageNotFound: "ページが見つかりません"
 pageNotFoundMessage: "申し訳ございません。お探しのページが見つかりませんでした。"
 backToHome: "ホームに戻る"
 
+# Archives
+archiveTitle: "アーカイブ: "
+archivesForYear: "%d年のアーカイブ"
+archivesForMonth: "%s月のアーカイブ"
+archivesForDate: "%sのアーカイブ"
+
 # Footer
 copyright: "Copyright"
 

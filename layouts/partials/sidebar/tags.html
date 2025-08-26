@@ -12,7 +12,7 @@
             {{ if gt $count 10 }}
                 {{ $size = "tag-lg" }}
             {{ end }}
-            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" 
+            <a href="{{ "/t/" | relLangURL }}{{ $name | urlize }}" 
                class="tag {{ $size }} badge bg-secondary text-decoration-none">
                 {{ $name }}
             </a>

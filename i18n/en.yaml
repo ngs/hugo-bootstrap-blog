@@ -49,6 +49,12 @@ pageNotFound: "Page Not Found"
 pageNotFoundMessage: "Sorry, the page you are looking for could not be found."
 backToHome: "Back to Home"
 
+# Archives
+archiveTitle: "Archives: "
+archivesForYear: "Archives for %d"
+archivesForMonth: "Archives for %s"
+archivesForDate: "Archives for %s"
+
 # Footer
 copyright: "Copyright"
 

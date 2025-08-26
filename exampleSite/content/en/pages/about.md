@@ -1,6 +1,7 @@
 ---
 title: "About"
 url: "/about/"
+showReadingTime: false
 ---
 
 This is the about page for the Bootstrap Blog theme demo.

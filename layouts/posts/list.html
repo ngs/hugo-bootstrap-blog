@@ -1,0 +1,79 @@
+{{ define "main" }}
+<div class="posts-archive">
+    <h1 class="mb-4">
+        {{- if .IsHome -}}
+            {{ i18n "latestPosts" | default "Latest Posts" }}
+        {{- else -}}
+            {{ .Title }}
+        {{- end -}}
+    </h1>
+
+    <div class="posts-list">
+        {{ $paginator := .Paginate .Pages }}
+        {{ range $paginator.Pages }}
+            <article class="blog-post">
+                <h3 class="post-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h3>
+                
+                <div class="post-meta">
+                    <span class="meta-item">
+                        <i class="bi bi-calendar"></i>
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">
+                            {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") }}
+                        </time>
+                    </span>
+                    
+                    {{ if .Params.author }}
+                    <span class="meta-item">
+                        <i class="bi bi-person"></i>
+                        {{ .Params.author }}
+                    </span>
+                    {{ else if .Site.Params.author.name }}
+                    <span class="meta-item">
+                        <i class="bi bi-person"></i>
+                        {{ .Site.Params.author.name }}
+                    </span>
+                    {{ end }}
+                    
+                    {{ if .Params.categories }}
+                    <span class="meta-item">
+                        <i class="bi bi-folder"></i>
+                        {{ range $i, $cat := .Params.categories }}
+                            {{- if $i }}, {{ end -}}
+                            <a href="{{ "categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+                        {{- end }}
+                    </span>
+                    {{ end }}
+                    
+                    {{ if .Site.Params.showReadingTime }}
+                    <span class="meta-item">
+                        <i class="bi bi-clock"></i>
+                        {{ .ReadingTime }} {{ i18n "minRead" | default "min read" }}
+                    </span>
+                    {{ end }}
+                </div>
+                
+                <div class="post-summary">
+                    {{ if .Params.image }}
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}" class="post-thumbnail mb-3">
+                    {{ end }}
+                    {{ .Summary | plainify | truncate 200 }}
+                </div>
+                
+                <a href="{{ .RelPermalink }}" class="read-more">
+                    {{ i18n "readMore" | default "Read more" }} <i class="bi bi-arrow-right"></i>
+                </a>
+            </article>
+        {{ end }}
+    </div>
+    
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav aria-label="{{ i18n "pagination" | default "Pagination" }}">
+        <ul class="pagination justify-content-center">
+            {{ template "_internal/pagination.html" . }}
+        </ul>
+    </nav>
+    {{ end }}
+</div>
+{{ end }}

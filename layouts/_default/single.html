@@ -4,14 +4,16 @@
         <h1 class="post-title">{{ .Title }}</h1>
         
         <div class="post-meta">
+            {{ if .Lastmod }}
             <span class="meta-item">
                 <i class="bi bi-calendar"></i>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">
                     {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") }}
                 </time>
             </span>
+            {{ end }}
             
-            {{ if ne .Date .Lastmod }}
+            {{ if and (ne .Date .Lastmod) (gt .Lastmod 1) }}
             <span class="meta-item">
                 <i class="bi bi-arrow-clockwise"></i>
                 {{ i18n "lastUpdated" }}
@@ -21,7 +23,7 @@
             </span>
             {{ end }}
             
-            {{ if .Site.Params.showReadingTime }}
+            {{ if and .Site.Params.showReadingTime (ne .Params.showReadingTime false) }}
             <span class="meta-item">
                 <i class="bi bi-clock"></i>
                 {{ .ReadingTime }} {{ i18n "minRead" }}

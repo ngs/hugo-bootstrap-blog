@@ -3,13 +3,27 @@
 <div class="sidebar-module">
     <h4>{{ i18n "archives" }}</h4>
     <ul>
-        {{ range ($posts.GroupByDate "January 2006") }}
-        <li>
-            <a href="{{ "/posts/" | relLangURL }}#{{ .Key | urlize }}" class="text-decoration-none">
-                {{ .Key }}
-            </a>
-            <span class="text-muted">({{ len .Pages }})</span>
-        </li>
+        {{ range ($posts.GroupByDate "2006") }}
+            {{ $year := .Key }}
+            <li>
+                <a href="{{ printf "/%s/" $year | relLangURL }}" class="text-decoration-none">
+                    {{ $year }}
+                </a>
+                <span class="text-muted">({{ len .Pages }})</span>
+                {{ $yearPosts := .Pages }}
+                <ul class="list-unstyled ms-3">
+                    {{ range ($yearPosts.GroupByDate "January") }}
+                        {{ $month := .Key }}
+                        {{ $monthNum := (time (index .Pages 0).Date).Month }}
+                        <li>
+                            <a href="{{ printf "/%s/%02d/" $year $monthNum | relLangURL }}" class="text-decoration-none small">
+                                {{ $month }}
+                            </a>
+                            <span class="text-muted small">({{ len .Pages }})</span>
+                        </li>
+                    {{ end }}
+                </ul>
+            </li>
         {{ end }}
     </ul>
 </div>

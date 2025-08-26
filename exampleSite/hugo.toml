@@ -22,8 +22,13 @@ languageName = "日本語"
 title = "Bootstrap Blog デモ"
 weight = 2
 
+[permalinks]
+posts = "/:year/:month/:day/:slug/"
+tags = "/t/:slug/"
+
 [pagination]
 pagerSize = 5
+path = "p"
 
 [params]
 
